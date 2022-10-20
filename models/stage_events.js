@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     event_id: DataTypes.SMALLINT
   }, {
     sequelize,
-    modelName: 'stage_events',
+    modelName: 'stage_event',
   });
   return stage_events;
 };

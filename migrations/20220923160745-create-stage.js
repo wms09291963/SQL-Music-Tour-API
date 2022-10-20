@@ -8,9 +8,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      stage_id: {
-        type: Sequelize.INTEGER
-      },
       stage_name: {
         type: Sequelize.STRING
       },
