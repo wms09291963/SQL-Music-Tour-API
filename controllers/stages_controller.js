@@ -10,7 +10,7 @@ stages.get('/', async (req, res) => {
         const foundStages = await Stage.findAll({ 
             order: [ [ 'stage_name', 'ASC' ] ],
             where: {
-                name: {[Op.like]: `%${req.query.name ? req.query.name : ''}%`}
+                stage_name: {[Op.like]: `%${req.query.stage_name ? req.query.stage_name : ''}%`}
             }
                 
         })
@@ -25,9 +25,8 @@ stages.get('/', async (req, res) => {
 stages.get('/:name', async (req, res) => {
     try {
         const foundStage = await Stage.findOne({
-            where: { name: req.params.name  },
-            include: { model: MeetGreet, as: "meet_greets" }
-        })
+            where: { stage_id: req.params.id }
+       })
         res.status(200).json(foundStage)
     } catch (error) {
         res.status(500).json(error)

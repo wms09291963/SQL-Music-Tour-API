@@ -22,11 +22,10 @@ events.get('/', async (req, res) => {
 
 
 // FIND A SPECIFIC EVENT
-events.get('/:name', async (req, res) => {
+events.get('/:id', async (req, res) => {
     try {
-        const foundEvents = await Event.findOne({
-            where: { name: req.params.name  },
-            include: { model: MeetGreet, as: "meet_greets" }
+        const foundEvent = await Event.findOne({
+            where: { event_id: req.params.id },
         })
         res.status(200).json(foundEvent)
     } catch (error) {
@@ -36,7 +35,7 @@ events.get('/:name', async (req, res) => {
 
 // CREATE AN EVENT
 events.post('/', async (req, res) => {
-    console.log('WE hit the post events route!!!', req.body)
+    
     try {
         const newEvent = await Event.create(req.body)
         res.status(200).json({
